@@ -1,4 +1,4 @@
-const { GraphQLString, GraphQLList } = require("graphql")
+const { GraphQLString, GraphQLList, GraphQLInt } = require("graphql")
 const Parent = require("../../Models/Parent")
 const Student = require("../../Models/Student")
 const { StudentType } = require("../Types/StudentType")
@@ -42,4 +42,14 @@ const students = {
   },
 }
 
-module.exports = { addStudent, students }
+const singleStudent = {
+  type: StudentType,
+  args: { admissionNumber: { type: GraphQLInt } },
+  async resolve(_, args) {
+    let { admissionNumber } = args
+    let stds = await Student.findOne({ admissionNumber })
+    return stds
+  },
+}
+
+module.exports = { addStudent, students, singleStudent }

@@ -5,6 +5,7 @@ const dotenv = require("dotenv")
 const Auth = require("./Middlewares/Auth")
 const AuthParent = require("./Middlewares/AuthParent")
 const cors = require("cors")
+const static = require("./static")
 
 dotenv.config()
 
@@ -24,6 +25,8 @@ app.use(
     graphiql: true,
   })
 )
+
+app.use("/", Auth, AuthParent, static)
 
 app.listen(port, () => {
   console.log(`Server is running at port ${port}`)

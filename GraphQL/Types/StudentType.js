@@ -7,6 +7,8 @@ const {
   GraphQLBoolean,
 } = require("graphql")
 const Parent = require("../../Models/Parent")
+const Darasa = require("../../Models/Darasa")
+// const { DarasaType } = require("./DarasaType")
 
 const StudentType = new GraphQLObjectType({
   name: "studenttype",
@@ -21,6 +23,14 @@ const StudentType = new GraphQLObjectType({
         return pr
       },
     },
+    // darasa: {
+    //   type: DarasaType,
+    //   async resolve(_) {
+    //     let { admissionNumber } = _
+    //     let cls = await Darasa.findOne({ students: { $in: admissionNumber } })
+    //     return cls
+    //   },
+    // },
   }),
 })
 
