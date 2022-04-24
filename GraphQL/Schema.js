@@ -26,6 +26,18 @@ const {
   assignStudentToClass,
   myClass,
 } = require("./Resolvers/DarasaResolver")
+const {
+  addSubject,
+  subjects,
+  compulsorySubjects,
+  studentAddSubject,
+  studentRemoveSubject,
+} = require("./Resolvers/SubjectResolver")
+const {
+  addGradeLetter,
+  gradeLetters,
+  getGrade,
+} = require("./Resolvers/GradeLetterResolver")
 
 const RootQuery = new GraphQLObjectType({
   name: "RootQueryType",
@@ -41,6 +53,10 @@ const RootQuery = new GraphQLObjectType({
     classes,
     singleStudent,
     myClass,
+    subjects,
+    compulsorySubjects,
+    gradeLetters,
+    getGrade,
   },
 })
 
@@ -55,6 +71,10 @@ const RootMutation = new GraphQLObjectType({
     changeParentPassword: changePasswordParent,
     addClass,
     assignStudentToClass,
+    addSubject,
+    studentAddSubject,
+    studentRemoveSubject,
+    addGradeLetter,
   },
 })
 

@@ -8,6 +8,8 @@ const {
 } = require("graphql")
 const Parent = require("../../Models/Parent")
 const Darasa = require("../../Models/Darasa")
+const { SubjectType } = require("./SubjectType")
+const Subject = require("../../Models/Subject")
 // const { DarasaType } = require("./DarasaType")
 
 const StudentType = new GraphQLObjectType({
@@ -15,12 +17,22 @@ const StudentType = new GraphQLObjectType({
   fields: () => ({
     name: { type: GraphQLString },
     admissionNumber: { type: GraphQLInt },
+    _id: { type: GraphQLString },
     photo: { type: GraphQLString },
     parent: {
       type: ParentType,
       async resolve(_) {
         let pr = await Parent.findOne({ students: { $in: _.admissionNumber } })
         return pr
+      },
+    },
+    subjects: {
+      type: new GraphQLList(SubjectType),
+      async resolve(_) {
+        let { subjects } = _
+        //console.log(_)
+        let sub = await Subject.find({ code: { $in: subjects } })
+        return sub
       },
     },
     // darasa: {
