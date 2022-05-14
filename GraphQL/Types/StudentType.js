@@ -10,6 +10,10 @@ const Parent = require("../../Models/Parent")
 const Darasa = require("../../Models/Darasa")
 const { SubjectType } = require("./SubjectType")
 const Subject = require("../../Models/Subject")
+const { CohortType } = require("./CohortType")
+const Cohort = require("../../Models/Cohort")
+const mongoose = require("mongoose")
+const { ClassType } = require("./ClassType")
 // const { DarasaType } = require("./DarasaType")
 
 const StudentType = new GraphQLObjectType({
@@ -35,14 +39,26 @@ const StudentType = new GraphQLObjectType({
         return sub
       },
     },
-    // darasa: {
-    //   type: DarasaType,
-    //   async resolve(_) {
-    //     let { admissionNumber } = _
-    //     let cls = await Darasa.findOne({ students: { $in: admissionNumber } })
-    //     return cls
-    //   },
-    // },
+    cohorts: {
+      type: new GraphQLList(CohortType),
+      async resolve(_) {
+        let { cohorts } = _
+        let c = []
+        for (let cc of cohorts) {
+          let coh = await Cohort.findOne({ id: cc })
+          c.push(coh)
+        }
+        return c
+      },
+    },
+    class: {
+      type: ClassType,
+      async resolve(_) {
+        let { admissionNumber } = _
+        let cls = await Darasa.findOne({ students: { $in: admissionNumber } })
+        return cls
+      },
+    },
   }),
 })
 

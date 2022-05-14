@@ -39,6 +39,7 @@ const assignStudentToClass = {
     level: { type: GraphQLInt },
   },
   async resolve(_, args, req) {
+    // throw new Error("Student only assigned to cohort")
     if (!req.user.loggedIn) throw new Error("You are not Logged In")
     if (!req.user.details.roles.includes("admit"))
       throw new Error("You are not allowed to assign a student any class")

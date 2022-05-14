@@ -8,7 +8,7 @@ const Student = require("../../Models/Student")
 const { StudentType } = require("./StudentType")
 
 const DarasaType = new GraphQLObjectType({
-  name: "darasa",
+  name: "darasatype",
   fields: () => ({
     level: { type: GraphQLInt },
     label: { type: GraphQLString },

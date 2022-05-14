@@ -38,6 +38,12 @@ const {
   gradeLetters,
   getGrade,
 } = require("./Resolvers/GradeLetterResolver")
+const {
+  addCohort,
+  registerStudentInCohort,
+  cohorts,
+  removeStudentFromCohort,
+} = require("./Resolvers/CohortsResolver")
 
 const RootQuery = new GraphQLObjectType({
   name: "RootQueryType",
@@ -57,6 +63,7 @@ const RootQuery = new GraphQLObjectType({
     compulsorySubjects,
     gradeLetters,
     getGrade,
+    cohorts,
   },
 })
 
@@ -75,6 +82,9 @@ const RootMutation = new GraphQLObjectType({
     studentAddSubject,
     studentRemoveSubject,
     addGradeLetter,
+    addCohort,
+    registerStudentInCohort,
+    removeStudentFromCohort,
   },
 })
 
