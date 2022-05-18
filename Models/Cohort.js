@@ -6,12 +6,12 @@ const cohortSchema = new mongoose.Schema({
   term1Fees: { type: Number },
   term2Fees: { type: Number },
   term3Fees: { type: Number },
-  term1Start: { type: String },
-  term2Start: { type: String },
-  term3Start: { type: String },
-  term1End: { type: String },
-  term2End: { type: String },
-  term3End: { type: String },
+  term1Start: { type: Date },
+  term2Start: { type: Date },
+  term3Start: { type: Date },
+  term1End: { type: Date },
+  term2End: { type: Date },
+  term3End: { type: Date },
   label: { type: String },
 })
 

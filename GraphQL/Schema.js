@@ -25,6 +25,7 @@ const {
   addClass,
   assignStudentToClass,
   myClass,
+  singleClass,
 } = require("./Resolvers/DarasaResolver")
 const {
   addSubject,
@@ -43,7 +44,14 @@ const {
   registerStudentInCohort,
   cohorts,
   removeStudentFromCohort,
+  singleCohort,
 } = require("./Resolvers/CohortsResolver")
+const {
+  addMark,
+  marks,
+  studentCohortMarks,
+  studentMarks,
+} = require("./Resolvers/MarkResolver")
 
 const RootQuery = new GraphQLObjectType({
   name: "RootQueryType",
@@ -57,6 +65,7 @@ const RootQuery = new GraphQLObjectType({
     myUserDetails,
     myParentDetails,
     classes,
+    singleClass,
     singleStudent,
     myClass,
     subjects,
@@ -64,6 +73,10 @@ const RootQuery = new GraphQLObjectType({
     gradeLetters,
     getGrade,
     cohorts,
+    singleCohort,
+    marks,
+    studentCohortMarks,
+    studentMarks,
   },
 })
 
@@ -85,6 +98,7 @@ const RootMutation = new GraphQLObjectType({
     addCohort,
     registerStudentInCohort,
     removeStudentFromCohort,
+    addMark,
   },
 })
 

@@ -71,6 +71,16 @@ const cohorts = {
   },
 }
 
+const singleCohort = {
+  type: CohortType,
+  args: { id: { type: GraphQLInt } },
+  async resolve(_, args) {
+    let { id } = args
+    let co = await Cohort.findOne({ id })
+    return co
+  },
+}
+
 const registerStudentInCohort = {
   type: StudentType,
   args: { cohort: { type: GraphQLInt }, student: { type: GraphQLInt } },
@@ -129,4 +139,5 @@ module.exports = {
   cohorts,
   registerStudentInCohort,
   removeStudentFromCohort,
+  singleCohort,
 }

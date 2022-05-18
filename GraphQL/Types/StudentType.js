@@ -14,6 +14,7 @@ const { CohortType } = require("./CohortType")
 const Cohort = require("../../Models/Cohort")
 const mongoose = require("mongoose")
 const { ClassType } = require("./ClassType")
+// const { StudentMarksType } = require("./StudentMarksType")
 // const { DarasaType } = require("./DarasaType")
 
 const StudentType = new GraphQLObjectType({

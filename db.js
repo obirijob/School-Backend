@@ -9,6 +9,6 @@ mongoose
   .then(() => {
     console.log("DB Connected Successfully")
   })
-  .catch((e) => {
+  .catch(e => {
     console.log(`Failed to connect to db \n\n${e.toString()}`)
   })

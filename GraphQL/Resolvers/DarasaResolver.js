@@ -26,8 +26,19 @@ const addClass = {
 const classes = {
   type: new GraphQLList(DarasaType),
   async resolve(_, args, req) {
-    if (!req.user.loggedIn) throw new Error("You are not Logged In")
+    // if (!req.user.loggedIn) throw new Error("You are not Logged In")
     let cls = await Darasa.find()
+    return cls
+  },
+}
+
+const singleClass = {
+  type: DarasaType,
+  args: { level: { type: GraphQLInt } },
+  async resolve(_, args, req) {
+    let { level } = args
+    // if (!req.user.loggedIn) throw new Error("You are not Logged In")
+    let cls = await Darasa.findOne({ level })
     return cls
   },
 }
@@ -78,4 +89,10 @@ const myClass = {
   },
 }
 
-module.exports = { addClass, classes, assignStudentToClass, myClass }
+module.exports = {
+  addClass,
+  classes,
+  assignStudentToClass,
+  myClass,
+  singleClass,
+}
