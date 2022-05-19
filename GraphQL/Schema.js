@@ -51,6 +51,8 @@ const {
   marks,
   studentCohortMarks,
   studentMarks,
+  editMark,
+  studentSubjectCohortMarks,
 } = require("./Resolvers/MarkResolver")
 
 const RootQuery = new GraphQLObjectType({
@@ -77,6 +79,7 @@ const RootQuery = new GraphQLObjectType({
     marks,
     studentCohortMarks,
     studentMarks,
+    studentSubjectCohortMarks,
   },
 })
 
@@ -99,6 +102,7 @@ const RootMutation = new GraphQLObjectType({
     registerStudentInCohort,
     removeStudentFromCohort,
     addMark,
+    editMark,
   },
 })
 
